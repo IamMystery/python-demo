@@ -18,13 +18,12 @@ goods = [
 while True:
 
     total_inp = input("请输入您的总资产：")
-    if total_inp == "":
-
-        print("指令输入有误，请重新选择！")
-        continue
-    else:
+    try:
         total = int(total_inp)
         break
+    except:
+        print("指令输入有误，请重新选择！")
+        
 
 cart = []  # 购物车
 cart_sum = 0  # 总价格
@@ -37,13 +36,15 @@ while True:
         print(i+1,temp)
     print("0 结束购物，查看购物车")
     print("===================")
-    opt_inp = input("请选择：")
-    if opt_inp == "":
-
-        print("指令输入有误，请重新选择！")
-        continue
-    else:
-        opt = int(opt_inp)
+    
+    while True:
+        opt_inp = input("请选择：")
+        try:
+            opt = int(opt_inp)
+            break
+        except:
+            print("指令输入有误，请重新选择！")
+        
     if opt == 0:
         while True:
 
@@ -58,14 +59,15 @@ while True:
             print("0  [结算]")
             print("删除商品请输入商品对应序号")
             print("===================")
-
-            opt2_inp = input("请选择：")
-            if opt2_inp == "":
-
-                print("指令输入有误，请重新选择！")
-                continue
-            else:
-                opt2 = int(opt2_inp)
+            
+            while True:
+                opt2_inp = input("请选择：")
+                try:
+                    opt2 = int(opt2_inp)
+                    break
+                except:
+                    print("指令输入有误，请重新选择！")
+                
 
             # 返回项
             if opt2 == 8:
@@ -73,7 +75,14 @@ while True:
 
             # 充值项
             elif opt2 == 9:
-                top_up = int(input("请输入要充值的金额数："))
+                
+                while True:
+                     top_up = int(input("请输入要充值的金额数："))
+                     try:
+                        top_up = int(top_up)
+                        break
+                     except:
+                        print("指令输入有误，请重新选择！")
                 total += top_up
                 print("充值成功")
                 continue
